@@ -5,7 +5,7 @@ import VideoCard from '../components/VideoCard';
 
 const Home = () => {
     const dispatch = useDispatch();
-    const videos = useSelector((state) => state.video.videos);
+    const { videos, status, error } = useSelector((state) => state.video);
 
     useEffect(() => {
         dispatch(fetchVideos());
@@ -13,11 +13,15 @@ const Home = () => {
 
     return (
         <div className="container mx-auto mt-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {videos.map((video) => (
-                    <VideoCard key={video._id} video={video} />
-                ))}
-            </div>
+            {status === 'loading' && <p>Loading...</p>}
+            {status === 'failed' && <p>Error: {error}</p>}
+            {status === 'succeeded' && (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {videos.map((video) => (
+                        <VideoCard key={video._id} video={video} />
+                    ))}
+                </div>
+            )}
         </div>
     );
 };

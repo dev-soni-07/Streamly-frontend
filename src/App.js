@@ -1,6 +1,7 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
 import Video from './pages/Video';
@@ -15,15 +16,16 @@ function App() {
       <div className="flex">
         <Sidebar />
         <div className="flex-1 p-4">
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/video/:videoId" component={Video} />
-            <Route path="/profile/:userId" component={Profile} />
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
-          </Switch>
+          <Routes>
+            <Route path="/" exact element={<Home />} />
+            <Route path="/video/:videoId" element={<Video />} />
+            <Route path="/profile/:userId" element={<Profile />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Routes>
         </div>
       </div>
+      <Footer />
     </Router>
   );
 }
