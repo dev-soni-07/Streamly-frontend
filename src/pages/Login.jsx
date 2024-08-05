@@ -3,12 +3,12 @@ import { useDispatch } from 'react-redux';
 import { loginUser } from '../features/user/userSlice';
 
 const Login = () => {
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
 
     const handleLogin = () => {
-        dispatch(loginUser({ username, password }));
+        dispatch(loginUser({ email, password }));
     };
 
     return (
@@ -17,9 +17,9 @@ const Login = () => {
             <div className="mt-4">
                 <input
                     type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    placeholder="Username"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Email"
                     className="border p-2 w-full"
                 />
                 <input
