@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import BASE_URL from '../../config';
+import BASE_API_URL from '../../config';
 
 const initialState = {
     tweets: [],
@@ -11,25 +11,25 @@ const initialState = {
 
 // Fetch all tweets for a user
 export const fetchTweets = createAsyncThunk('tweet/fetchTweets', async (userId) => {
-    const response = await axios.get(`${BASE_URL}/tweets/user/${userId}`);
+    const response = await axios.get(`${BASE_API_URL}/tweets/user/${userId}`);
     return response.data;
 });
 
 // Create a new tweet
 export const createTweet = createAsyncThunk('tweet/createTweet', async (tweetData) => {
-    const response = await axios.post(`${BASE_URL}/tweets`, tweetData);
+    const response = await axios.post(`${BASE_API_URL}/tweets`, tweetData);
     return response.data;
 });
 
 // Update a tweet
 export const updateTweet = createAsyncThunk('tweet/updateTweet', async ({ tweetId, tweetData }) => {
-    const response = await axios.patch(`${BASE_URL}/tweets/${tweetId}`, tweetData);
+    const response = await axios.patch(`${BASE_API_URL}/tweets/${tweetId}`, tweetData);
     return response.data;
 });
 
 // Delete a tweet
 export const deleteTweet = createAsyncThunk('tweet/deleteTweet', async (tweetId) => {
-    const response = await axios.delete(`${BASE_URL}/tweets/${tweetId}`);
+    const response = await axios.delete(`${BASE_API_URL}/tweets/${tweetId}`);
     return response.data;
 });
 

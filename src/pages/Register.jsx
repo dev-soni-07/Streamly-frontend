@@ -15,27 +15,27 @@ const Register = () => {
 
     return (
         <div className="container mx-auto mt-8">
-            <h1 className="text-3xl font-bold">Register</h1>
+            <h1 className="text-3xl font-bold text-white">Sign Up</h1>
             <div className="mt-4">
+                <input
+                    type="text"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                    placeholder="Full Name"
+                    className="border p-2 w-full"
+                />
                 <input
                     type="text"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     placeholder="Username"
-                    className="border p-2 w-full"
+                    className="border p-2 w-full mt-2"
                 />
                 <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Email"
-                    className="border p-2 w-full mt-2"
-                />
-                <input
-                    type="text"
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    placeholder="Full Name"
                     className="border p-2 w-full mt-2"
                 />
                 <input
@@ -46,7 +46,7 @@ const Register = () => {
                     className="border p-2 w-full mt-2"
                 />
                 <button onClick={handleRegister} className="bg-blue-600 text-white p-2 mt-4">
-                    Register
+                    Sign Up
                 </button>
             </div>
         </div>

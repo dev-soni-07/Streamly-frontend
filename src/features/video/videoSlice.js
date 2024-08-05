@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import BASE_URL from '../../config';
+import BASE_API_URL from '../../config';
 
 const initialState = {
     videos: [],
@@ -11,13 +11,13 @@ const initialState = {
 
 // Fetch all videos
 export const fetchVideos = createAsyncThunk('video/fetchVideos', async () => {
-    const response = await axios.get(`${BASE_URL}/videos`);
+    const response = await axios.get(`${BASE_API_URL}/videos`);
     return response.data;
 });
 
 // Fetch a single video
 export const fetchVideo = createAsyncThunk('video/fetchVideo', async (videoId) => {
-    const response = await axios.get(`${BASE_URL}/videos/${videoId}`);
+    const response = await axios.get(`${BASE_API_URL}/videos/${videoId}`);
     return response.data;
 });
 
